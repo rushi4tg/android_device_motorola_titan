@@ -44,3 +44,14 @@ jobs:
           cd ~/android/lineage
           repo init -u https://github.com/LineageOS/android.git -b lineage-17.1
           repo sync -c --no-clone-bundle --no-tags --force-sync --optimized-fetch --prune
+          
+      - name: Prepare device-specific environment
+        run: |
+          source build/envsetup.sh
+          breakfast titan
+          
+      - name: Build!
+        run: |
+          croot
+          brunch titan
+
